@@ -2,8 +2,8 @@
 
 namespace App\Infrastructure\Eloquent;
 
-use App\Domain\Contact\ContactRepositoryInterface;
 use App\Domain\Contact\Contact;
+use App\Domain\Contact\ContactRepositoryInterface;
 use App\Models\Contact as EloquentContact;
 
 class ContactRepository implements ContactRepositoryInterface

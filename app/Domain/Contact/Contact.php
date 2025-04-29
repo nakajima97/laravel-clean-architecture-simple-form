@@ -5,7 +5,9 @@ namespace App\Domain\Contact;
 class Contact
 {
     private string $name;
+
     private string $email;
+
     private string $message;
 
     public function __construct(string $name, string $email, string $message)

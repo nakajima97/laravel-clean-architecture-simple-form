@@ -8,7 +8,6 @@ use App\UseCases\Contact\ContactSubmitUseCase;
 
 class ContactController extends Controller
 {
-
     private ContactSubmitUseCase $contactSubmitUseCase;
 
     public function __construct(ContactSubmitUseCase $contactSubmitUseCase)
