@@ -12,3 +12,5 @@
 `./vendor/bin/sail pint`
 
 ## lint
+
+`./vendor/bin/sail run ./vendor/bin/phpstan analyse`
