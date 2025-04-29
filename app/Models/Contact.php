@@ -17,7 +17,8 @@ class Contact extends Model
 
     /**
      * ホワイトリスト項目
-     * @var array
+     *
+     * @var list<string>
      */
     protected $fillable = [
         'name',

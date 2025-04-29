@@ -16,14 +16,13 @@ class ContactController extends Controller
 {
     /**
      * 問い合わせ送信ユースケース
-     * @var ContactSubmitUseCase
      */
     private ContactSubmitUseCase $contactSubmitUseCase;
 
     /**
      * ContactController コンストラクタ。
      *
-     * @param ContactSubmitUseCase $contactSubmitUseCase 問い合わせ送信ユースケース
+     * @param  ContactSubmitUseCase  $contactSubmitUseCase  問い合わせ送信ユースケース
      */
     public function __construct(ContactSubmitUseCase $contactSubmitUseCase)
     {
@@ -33,7 +32,7 @@ class ContactController extends Controller
     /**
      * 問い合わせデータを受け取り保存するAPIエンドポイント。
      *
-     * @param ContactRequest $request バリデーション済みリクエスト
+     * @param  ContactRequest  $request  バリデーション済みリクエスト
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(ContactRequest $request)

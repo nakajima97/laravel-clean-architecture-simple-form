@@ -20,7 +20,7 @@ class ContactSubmitUseCase
     /**
      * コンストラクタ。
      *
-     * @param ContactRepositoryInterface $contactRepository 問い合わせリポジトリ
+     * @param  ContactRepositoryInterface  $contactRepository  問い合わせリポジトリ
      */
     public function __construct(ContactRepositoryInterface $contactRepository)
     {
@@ -30,10 +30,9 @@ class ContactSubmitUseCase
     /**
      * 問い合わせデータを保存するユースケースの実行。
      *
-     * @param string $name    ユーザー名
-     * @param string $email   メールアドレス
-     * @param string $message 問い合わせメッセージ
-     * @return void
+     * @param  string  $name  ユーザー名
+     * @param  string  $email  メールアドレス
+     * @param  string  $message  問い合わせメッセージ
      */
     public function handle(string $name, string $email, string $message): void
     {

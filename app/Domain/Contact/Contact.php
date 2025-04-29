@@ -11,28 +11,25 @@ class Contact
 {
     /**
      * ユーザー名
-     * @var string
      */
     private string $name;
 
     /**
      * メールアドレス
-     * @var string
      */
     private string $email;
 
     /**
      * 問い合わせメッセージ
-     * @var string
      */
     private string $message;
 
     /**
      * Contact コンストラクタ。
      *
-     * @param string $name    ユーザー名
-     * @param string $email   メールアドレス
-     * @param string $message 問い合わせメッセージ
+     * @param  string  $name  ユーザー名
+     * @param  string  $email  メールアドレス
+     * @param  string  $message  問い合わせメッセージ
      */
     public function __construct(string $name, string $email, string $message)
     {
@@ -43,8 +40,6 @@ class Contact
 
     /**
      * ユーザー名を取得
-     *
-     * @return string
      */
     public function getName(): string
     {
@@ -53,8 +48,6 @@ class Contact
 
     /**
      * メールアドレスを取得
-     *
-     * @return string
      */
     public function getEmail(): string
     {
@@ -63,8 +56,6 @@ class Contact
 
     /**
      * 問い合わせメッセージを取得
-     *
-     * @return string
      */
     public function getMessage(): string
     {

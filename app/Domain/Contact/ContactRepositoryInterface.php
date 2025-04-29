@@ -13,8 +13,7 @@ interface ContactRepositoryInterface
     /**
      * 問い合わせ情報を保存する。
      *
-     * @param Contact $contact 保存する問い合わせエンティティ
-     * @return void
+     * @param  Contact  $contact  保存する問い合わせエンティティ
      */
     public function save(Contact $contact): void;
 }
