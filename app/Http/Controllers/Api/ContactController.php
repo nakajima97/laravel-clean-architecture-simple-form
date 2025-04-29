@@ -4,18 +4,30 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
+use App\UseCases\Contact\ContactSubmitUseCase;
 
 class ContactController extends Controller
 {
+
+    private ContactSubmitUseCase $contactSubmitUseCase;
+
+    public function __construct(ContactSubmitUseCase $contactSubmitUseCase)
+    {
+        $this->contactSubmitUseCase = $contactSubmitUseCase;
+    }
+
     public function store(ContactRequest $request)
     {
-        // ここではまだ保存処理はしない（UseCaseに渡すだけ）
         $validatedData = $request->validated();
 
-        // この段階では仮でレスポンスだけ返す
+        $this->contactSubmitUseCase->handle(
+            $validatedData['name'],
+            $validatedData['email'],
+            $validatedData['message']
+        );
+
         return response()->json([
-            'message' => 'バリデーション成功！',
-            'data' => $validatedData,
+            'message' => '問い合わせを受け付けました。',
         ], 201);
     }
 }
