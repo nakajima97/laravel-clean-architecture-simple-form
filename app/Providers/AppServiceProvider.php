@@ -6,10 +6,17 @@ use App\Domain\Contact\ContactRepositoryInterface;
 use App\Infrastructure\Eloquent\ContactRepository;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * アプリケーションサービスプロバイダ。
+ *
+ * DIコンテナへのバインドやアプリケーション全体のサービス設定を行います。
+ */
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * アプリケーションサービスの登録。
+     *
+     * @return void
      */
     public function register(): void
     {
@@ -18,7 +25,9 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap any application services.
+     * アプリケーションサービスの起動処理。
+     *
+     * @return void
      */
     public function boot(): void
     {
