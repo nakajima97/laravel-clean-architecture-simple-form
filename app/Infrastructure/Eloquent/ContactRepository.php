@@ -26,4 +26,25 @@ class ContactRepository implements ContactRepositoryInterface
             'message' => $contact->getMessage(),
         ]);
     }
+
+    /**
+     * すべての問い合わせ情報を取得する。
+     *
+     * @return array<Contact> 問い合わせエンティティの配列
+     */
+    public function findAll(): array
+    {
+        $eloquentContacts = EloquentContact::all();
+        
+        $contacts = [];
+        foreach ($eloquentContacts as $eloquentContact) {
+            $contacts[] = new Contact(
+                $eloquentContact->name,
+                $eloquentContact->email,
+                $eloquentContact->message
+            );
+        }
+        
+        return $contacts;
+    }
 }

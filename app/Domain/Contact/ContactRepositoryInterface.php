@@ -16,4 +16,11 @@ interface ContactRepositoryInterface
      * @param  Contact  $contact  保存する問い合わせエンティティ
      */
     public function save(Contact $contact): void;
+
+    /**
+     * すべての問い合わせ情報を取得する。
+     *
+     * @return array<Contact> 問い合わせエンティティの配列
+     */
+    public function findAll(): array;
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
 use App\UseCases\Contact\ContactSubmitUseCase;
+use App\UseCases\Contact\GetAllContactsUseCase;
 
 /**
  * 問い合わせAPI用コントローラー。
@@ -20,13 +21,22 @@ class ContactController extends Controller
     private ContactSubmitUseCase $contactSubmitUseCase;
 
     /**
+     * 問い合わせ取得ユースケース
+     */
+    private GetAllContactsUseCase $getAllContactsUseCase;
+
+    /**
      * ContactController コンストラクタ。
      *
      * @param  ContactSubmitUseCase  $contactSubmitUseCase  問い合わせ送信ユースケース
+     * @param  GetAllContactsUseCase  $getAllContactsUseCase  問い合わせ取得ユースケース
      */
-    public function __construct(ContactSubmitUseCase $contactSubmitUseCase)
-    {
+    public function __construct(
+        ContactSubmitUseCase $contactSubmitUseCase,
+        GetAllContactsUseCase $getAllContactsUseCase
+    ) {
         $this->contactSubmitUseCase = $contactSubmitUseCase;
+        $this->getAllContactsUseCase = $getAllContactsUseCase;
     }
 
     /**
@@ -48,5 +58,19 @@ class ContactController extends Controller
         return response()->json([
             'message' => '問い合わせを受け付けました。',
         ], 201);
+    }
+
+    /**
+     * すべての問い合わせデータを取得するAPIエンドポイント。
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function index()
+    {
+        $contacts = $this->getAllContactsUseCase->handle();
+
+        return response()->json([
+            'data' => $contacts,
+        ]);
     }
 }
