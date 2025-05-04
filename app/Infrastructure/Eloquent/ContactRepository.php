@@ -26,4 +26,26 @@ class ContactRepository implements ContactRepositoryInterface
             'message' => $contact->getMessage(),
         ]);
     }
+
+    /**
+     * すべての問い合わせ情報を取得する。
+     * 作成日時の降順（新しい順）で返します。
+     *
+     * @return array<Contact> 問い合わせエンティティの配列
+     */
+    public function findAll(): array
+    {
+        $eloquentContacts = EloquentContact::orderBy('created_at', 'desc')->get();
+        
+        $contacts = [];
+        foreach ($eloquentContacts as $eloquentContact) {
+            $contacts[] = new Contact(
+                $eloquentContact->name,
+                $eloquentContact->email,
+                $eloquentContact->message
+            );
+        }
+        
+        return $contacts;
+    }
 }
