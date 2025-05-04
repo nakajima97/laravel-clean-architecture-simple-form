@@ -39,4 +39,17 @@ class ContactApiTest extends TestCase
         $response->assertStatus(422)
             ->assertJsonValidationErrors(['name', 'email', 'message']);
     }
+
+    public function test_store_email_too_long()
+    {
+        $longEmail = str_repeat('a', 256) . '@example.com';
+        $response = $this->postJson('/api/contact', [
+            'name' => 'テストユーザー',
+            'email' => $longEmail,
+            'message' => 'テスト'
+        ]);
+
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors(['email']);
+    }
 }
