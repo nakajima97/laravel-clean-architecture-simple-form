@@ -52,4 +52,30 @@ class ContactApiTest extends TestCase
         $response->assertStatus(422)
             ->assertJsonValidationErrors(['email']);
     }
+
+    public function test_store_missing_email()
+    {
+        $response = $this->postJson('/api/contact', [
+            'name' => 'テストユーザー',
+            // emailを省略
+            'message' => '内容'
+        ]);
+
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors(['email']);
+    }
+
+    public function test_store_message_too_long()
+    {
+        $longMessage = str_repeat('a', 10001); // 極端に長いメッセージ
+        $response = $this->postJson('/api/contact', [
+            'name' => 'テストユーザー',
+            'email' => 'test@example.com',
+            'message' => $longMessage
+        ]);
+
+        // messageにmax制限がなければ、このテストは失敗するので、必要に応じてバリデーション追加を検討してください
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors(['message']);
+    }
 }
