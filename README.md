@@ -17,3 +17,7 @@
 ## lint
 
 `./vendor/bin/sail run ./vendor/bin/phpstan analyse`
+
+## テスト
+
+`./vendor/bin/sail run php artisan test`
